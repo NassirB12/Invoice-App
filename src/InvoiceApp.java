@@ -5,10 +5,12 @@ import java.util.Scanner;
 /**
  * Represents an Invoice Calculator.
  *
- * @author <your group programmer names goes here>
+ * @author <Nassir Binion & Rania Hassani>
  * @version 1.0 <update this to version 2>
- * @link <Your GitHub Repository URL goes here>
+ * @link <https://github.com/NassirB12/Invoice-App>
  */
+
+
 public class InvoiceApp {
     /**
      * Scanner for all user input
@@ -130,6 +132,17 @@ public class InvoiceApp {
     } // end of getYesNo method
 
     /**
+     *
+     * @param subTotal
+     * @return
+     */
+    private static double getDiscountPercent(double subTotal) {
+        double discountPercent = 0.0;
+    }
+
+
+
+    /**
      * Print the user's receipt
      * @param descriptionList All descriptions for items purchased
      * @param qtyList All qualities for items purchased
@@ -142,6 +155,8 @@ public class InvoiceApp {
 
         double subTotal = 0.0;
         double receiptTotal = 0.0;
+
+        double dis
 
         System.out.println(InvoiceApp.DOUBLE_DASH_LINE);
         System.out.println("Customer Receipt");
