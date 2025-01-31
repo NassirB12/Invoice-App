@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 /**
  * Represents an Invoice Calculator.
  *
- * @author <Nassir Binion & Rania Hassani>
- * @version 1.0 <update this to version 2>
- * @link <https://github.com/NassirB12/Invoice-App>
+ * @author Nassir Binion & Rania Hassani
+ * @version 2.0
+ * @link https://github.com/NassirB12/Invoice-App
  */
 
 
@@ -25,7 +26,6 @@ public class InvoiceApp {
      * Standard single dash line for display output
      */
     private static final String SINGLE_DASH_LINE = DOUBLE_DASH_LINE.replace('=', '-');
-    private static boolean Total;
 
     /**
      * Prompt the user for a double value
@@ -124,35 +124,42 @@ public class InvoiceApp {
                 break;
             } else {
                 System.out.println("Invalid input. Please try again...");
-            }       } // end y/n validation
+            }
+        } // end y/n validation
 
         return ynAnswer; // true = yes | false = no
 
     } // end of getYesNo method
 
     /**
-     * @pqrqm discountPercent
-     * @param subTotal
-     * @return
+     * @param
+     * @param subTotal All totals for discounted items
+     * @return discountPercent Returns users discounted amount
      */
     private static double getDiscountPercent(double subTotal) {
-
         double discountPercent = 0.0;
         if (subTotal >= 50.0) {
             discountPercent = 0.25;
-        }else if (subTotal >= 40.0) {
+        } else if (subTotal >= 40.0) {
             discountPercent = 0.20;
-        }else if (subTotal >= 30.0) {
+        } else if (subTotal >= 30.0) {
             discountPercent = 0.15;
-        }else if (subTotal >= 20.0) {
+        } else if (subTotal >= 20.0) {
             discountPercent = 0.10;
-        }else if (subTotal >= 10.0) {
+        } else if (subTotal >= 10.0) {
             discountPercent = 0.05;
+        } else {
+            discountPercent = 0.0;
+        }
+
+        return discountPercent;
         }
 
 
-        return discountPercent;
-    }
+    
+
+
+
 
 
 
@@ -172,9 +179,11 @@ public class InvoiceApp {
         double receiptTotal = 0.0;
 
         double discountPercent = 0.0;
-        double discountAmount = 0.0;
-        double savingsTotal = 0.0;
-        double totalSavings = 0.0;
+        double discountAmount =0.0;
+        double savingsTotal=0.0;
+
+        double discountTotal = 0.0;
+        double finalTotal = 0.0;
 
         System.out.println(InvoiceApp.DOUBLE_DASH_LINE);
         System.out.println("Customer Receipt");
@@ -190,25 +199,29 @@ public class InvoiceApp {
 
             System.out.println();
             System.out.printf("%-20s  %3d  @  $%,6.2f = $%,8.2f\n", description, qty, price, subTotal);
-            discountPercent = InvoiceApp.getDiscountPercent(subTotal);
-            if(discountPercent > 0.0) {
-               discountAmount = subTotal * discountPercent;
-               System.out.print(InvoiceApp.DOUBLE_DASH_LINE);
 
+            discountPercent = InvoiceApp.getDiscountPercent(subTotal);
+            if (discountPercent>= 0.0) {
+                discountAmount = subTotal * discountPercent;
+                discountTotal = subTotal * discountPercent;
+                finalTotal = subTotal - discountTotal;
+                System.out.printf("%20s  %2.0f%%    -$%,6.2f = $%,8.2f\n", "Discount", (discountPercent * 100), discountTotal, finalTotal);
+                savingsTotal += discountAmount;
 
             }
+           if (savingsTotal>0.0){
+               System.out.println(InvoiceApp.SINGLE_DASH_LINE);
+               System.out.printf("Total savings: $%,8.2f\n", savingsTotal);
+               System.out.println(InvoiceApp.SINGLE_DASH_LINE);
+           }
             receiptTotal += subTotal;
 
         } // end of for lop
 
-
         System.out.println(InvoiceApp.SINGLE_DASH_LINE);
-        if (totalSavings > 0.0) {
-            System.out.printf("Total Savings: $%,8.2f\n", totalSavings);
-        }
         System.out.printf("Receipt Total: $%,8.2f\n", receiptTotal);
-
         System.out.println(InvoiceApp.SINGLE_DASH_LINE);
+
     } // end of printReceipt method
 
     /**
