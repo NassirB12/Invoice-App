@@ -1,26 +1,26 @@
 InvoiceApp
-.
+The code calculates the total saving and discounts on an item.
 
 Description
-An in-depth paragraph about your project and overview of use.
+The code takes an item and applies a discount percent the the price then
+displays the total amount with a discount added to it.
 
 Getting Started
 Dependencies
-Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-ex. Windows 10
-Installing
-How/where to download your program
-Any modifications needed to be made to files/folders
+* CLIon
+* GitHub
+* Windows 10
 Executing program
-How to run the program
-Step-by-step bullets
-code blocks for commands
+* Enter item
+* Enter item quantity
+* Enter price
+* Answer y/n question
+* Discount
+
 Help
-Any advise for common problems or issues.
+* Please contact Us if any help needed
 
-command to run if program contains helper info
 Authors
-Contributors names and contact info
+Nassir Binion
+Rania Hassani
 
-ex. Dominique Pizzie
-ex. @DomPizzie
